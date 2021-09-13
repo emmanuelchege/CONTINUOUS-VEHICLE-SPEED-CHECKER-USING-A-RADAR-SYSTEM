@@ -1,0 +1,22 @@
+. #include <FreqMeasure.h>
+void setup() {
+Serial.begin(57600);
+FreqMeasure.begin();
+}
+double sum = 0;
+int count = 0;
+void loop() {
+if (FreqMeasure.available()) {
+sum = sum + FreqMeasure.read();
+count = count + 1;
+if (count > 1) {
+float frequency = FreqMeasure.countToFrequency(sum / count);
+float spd = frequency / 19.49;
+Serial.print(frequency);
+Serial.print("Hz ");
+Serial.print(spd);
+Serial.println("km/h");
+sum = 0; count = 0;
+}
+}
+}
