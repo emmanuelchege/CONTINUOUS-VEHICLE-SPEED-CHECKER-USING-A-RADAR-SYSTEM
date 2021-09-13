@@ -1,0 +1,34 @@
+#include <FreqMeasure.h>
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+void setup() {
+Serial.begin(57600);
+lcd.begin(16, 2);
+lcd.print("Freq:");
+lcd.setCursor(10,0);
+lcd.print("Speed:");
+FreqMeasure.begin();
+}
+double sum=0;
+int count=0;
+void loop() {
+if (FreqMeasure.available()) {
+sum = sum + FreqMeasure.read();
+count = count + 1;
+if (count > 1) {
+int frequency = FreqMeasure.countToFrequency(sum / count);
+float spd = frequency / 19.49;
+lcd.setCursor(0, 1);
+lcd.print(" ");
+lcd.setCursor(0, 1);
+lcd.print(frequency);
+lcd.print("Hz");
+lcd.setCursor(8,1);
+lcd.print(spd);
+50
+lcd.print("km/h");
+sum = 0;
+count = 0;
+}
+}
+}
