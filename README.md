@@ -1,5 +1,6 @@
 # CONTINUOUS-VEHICLE-SPEED-CHECKER-USING-A-RADAR-SYSTEM
 Arduino based radar system to compute the speed of the cars and capture the number plate of cars driving over the speed limit
+
 One of the major contributing factors to road accidents is over speeding. The current
 method that is being used to curb over speeding in Kenya has proved to be ineffective
 because it does not operate throughout the day. It is therefore important to have a new
